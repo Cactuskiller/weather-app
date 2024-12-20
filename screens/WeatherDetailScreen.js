@@ -11,6 +11,7 @@ import {
 import { useRoute, useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 import { Ionicons } from "@expo/vector-icons"; // For the arrow icon
+import { Platform } from "react-native";
 
 const API_KEY = "9790c16fcb392f0d10a5c44b44f40fbd";
 
@@ -94,16 +95,16 @@ export default function WeatherDetails() {
         backgroundColor="transparent"
         translucent={true}
       />
-
-      {/* Back Arrow */}
       <TouchableOpacity
         style={styles.backButton}
         onPress={() => navigation.goBack()}
       >
         <Ionicons name="arrow-back" size={30} color="#333" />
       </TouchableOpacity>
-
-      <ScrollView contentContainerStyle={styles.scrollView}>
+      <ScrollView
+        contentContainerStyle={styles.scrollView}
+        showsVerticalScrollIndicator={true}
+      >
         {/* City Name and Temperature */}
         <Text style={styles.cityName}>{weatherData.name}</Text>
         <Text style={styles.temperature}>
@@ -169,6 +170,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight, // This adds padding for the status bar height
+    maxHeight: Platform.OS === "web" ? "100vh" : "100%",
   },
   backButton: {
     position: "absolute",
@@ -184,6 +186,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     paddingTop: 50,
     paddingBottom: 30,
+    minHeight: "100%",
+    width: "100%",
   },
   cityName: {
     fontSize: 32,
@@ -204,7 +208,7 @@ const styles = StyleSheet.create({
   },
   animationContainer: {
     width: "100%",
-    height: height * 0.3,
+    height: 300,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",

@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import {
   View,
@@ -16,6 +15,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { auth } from "../firebase"; // Import auth and firestore instances
+import { Platform } from "react-native";
 
 export default function SignUpScreen({ navigation }) {
   const [name, setName] = useState("");
@@ -87,11 +87,12 @@ export default function SignUpScreen({ navigation }) {
   return (
     <>
       {/* StatusBar */}
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <LinearGradient
-        colors={["#3E2D8F", "#9D52AC"]}
-        style={styles.container}
-      >
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <LinearGradient colors={["#3E2D8F", "#9D52AC"]} style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
           <Text style={styles.title}>Create Account</Text>
 
@@ -163,7 +164,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: Platform.OS === "web" ? "30%" : 20,
+  },
+  input: {
+    height: 50,
+    width: Platform.OS === "web" ? "100%" : "100%",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    borderRadius: 25,
     paddingHorizontal: 20,
+    fontSize: 16,
+    color: "#FFFFFF",
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.5)",
   },
   title: {
     fontSize: 36,

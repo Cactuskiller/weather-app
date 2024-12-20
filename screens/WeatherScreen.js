@@ -14,6 +14,7 @@ import { getAuth, signOut } from "firebase/auth";
 import { useNavigation } from "@react-navigation/native";
 import LottieView from "lottie-react-native";
 import { MaterialIcons } from "@expo/vector-icons";
+import { Platform } from "react-native";
 
 const API_KEY = "9790c16fcb392f0d10a5c44b44f40fbd";
 
@@ -187,8 +188,19 @@ const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
     alignItems: "center",
-    padding: 20,
+    paddingHorizontal: Platform.OS === 'web' ? '30%' : 20,
     justifyContent: "center",
+  },
+  input: {
+    height: 50,
+    width: "100%",
+    backgroundColor: "#F0F0F0",
+    borderRadius: 25,
+    paddingHorizontal: 20,
+    color: "#333",
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: "#DDD",
   },
   menuButton: {
     position: "absolute",
@@ -249,7 +261,7 @@ const styles = StyleSheet.create({
   },
   animationContainer: {
     width: "100%",
-    height: height * 0.3,
+    height: 300,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",

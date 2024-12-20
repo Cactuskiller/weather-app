@@ -77,14 +77,14 @@ const styles = StyleSheet.create({
   },
   animationContainer: {
     width: "100%",
-    height: height * 0.3,
+    height: 300,
     justifyContent: "center",
     alignItems: "center",
     overflow: "hidden",
   },
   animation: {
-    width: 200,
-    height: 200,
+    width: 150,
+    height: 150,
     marginBottom: 20,
   },
   title: {

@@ -13,7 +13,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
+import { Platform } from "react-native";
 
 export default function LoginScreen({ navigation }) {
   const [email, setEmail] = useState("");
@@ -33,7 +33,9 @@ export default function LoginScreen({ navigation }) {
       await signInWithEmailAndPassword(auth, email, password);
       navigation.replace("Weather");
     } catch (error) {
-      alert("Login failed. Please check your email and password and try again.");
+      alert(
+        "Login failed. Please check your email and password and try again."
+      );
     } finally {
       setLoading(false);
     }
@@ -59,16 +61,15 @@ export default function LoginScreen({ navigation }) {
   return (
     <>
       {/* StatusBar */}
-      <StatusBar barStyle="light-content" translucent backgroundColor="transparent" />
-      <LinearGradient
-        colors={["#3E2D8F", "#9D52AC"]}
-        style={styles.container}
-      >
+      <StatusBar
+        barStyle="light-content"
+        translucent
+        backgroundColor="transparent"
+      />
+      <LinearGradient colors={["#3E2D8F", "#9D52AC"]} style={styles.container}>
         <SafeAreaView style={styles.safeArea}>
-          
           <Text style={styles.title}>Log in</Text>
 
-         
           <TextInput
             style={styles.input}
             placeholder="Email"
@@ -120,7 +121,19 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
+    paddingHorizontal: Platform.OS === "web" ? "30%" : 20,
+  },
+  input: {
+    height: 50,
+    width: Platform.OS === "web" ? "100%" : "100%",
+    backgroundColor: "rgba(255, 255, 255, 0.2)",
+    borderRadius: 25,
     paddingHorizontal: 20,
+    fontSize: 16,
+    color: "#FFFFFF",
+    marginBottom: 15,
+    borderWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.5)",
   },
   backButton: {
     position: "absolute",
