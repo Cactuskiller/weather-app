@@ -3,7 +3,11 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, StatusBar } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { LinearGradient } from 'expo-linear-gradient';
+import { Dimensions } from 'react-native';
 import LottieView from 'lottie-react-native';
+
+
+const { width, height } = Dimensions.get('window');
 
 const WelcomeScreen = ({ navigation }) => {
   return (
@@ -22,6 +26,7 @@ const WelcomeScreen = ({ navigation }) => {
               source={require('../assets/Animation-cloud.json')} 
               autoPlay
               loop
+              resizeMode="contain"
               style={styles.animation}
             />
           </View>
@@ -42,21 +47,27 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 0,
+    overflow: 'hidden',
+    transform: [{ scale: 1 }],
   },
   safeArea: {
     flex: 1,
     justifyContent: 'space-between',
-   
+    overflow: 'hidden',
   },
   animationContainer: {
-    flex: 1,
+    width: '100%',
+    height: height * 0.4, // 40% of screen height
     justifyContent: 'center',
     alignItems: 'center',
-  },
+    overflow: 'hidden',
+    marginTop: height * 0.2, // 10% of screen height
+},
+
   animation: {
-    marginTop: 70,
-    width: 400,
-    height: 400,
+    width: 500, // Fixed width
+    height: 450, // Fixed height
+    alignSelf: 'center', // Center it
   },
   title: {
     fontSize: 36,
@@ -72,11 +83,11 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#FFD700',
-    paddingVertical: 15,
-    paddingHorizontal: 50,
+    paddingVertical: height * 0.02, // 2% of screen height
+    paddingHorizontal: width * 0.3, // 30% of screen width
     borderRadius: 30,
     alignSelf: 'center',
-    marginBottom: 150,
+    marginBottom: height * 0.1, // 10% of screen height
   },
   buttonText: {
     color: '#3E2D8F',

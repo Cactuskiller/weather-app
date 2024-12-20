@@ -9,9 +9,11 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@expo/metro-runtime": "~4.0.0",
     "@expo/vector-icons": "^14.0.2",
     "@firebase/auth": "^1.8.1",
     "@firebase/storage": "^0.13.4",
+    "@lottiefiles/dotlottie-react": "^0.6.5",
     "@react-navigation/native": "^7.0.14",
     "@react-navigation/stack": "^7.1.0",
     "axios": "^1.7.9",
@@ -20,6 +22,8 @@
     "expo-status-bar": "~2.0.0",
     "firebase": "^11.1.0",
     "lottie-react-native": "7.1.0",
+    "metro": "^0.81.0",
+    "metro-core": "^0.81.0",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "react-native-gesture-handler": "^2.21.2",

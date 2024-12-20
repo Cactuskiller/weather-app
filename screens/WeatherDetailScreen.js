@@ -112,13 +112,15 @@ export default function WeatherDetails() {
         <Text style={styles.description}>{weatherData.weather[0].main}</Text>
 
         {/* Weather Animation */}
-        <LottieView
-          source={getWeatherAnimation(weatherData.weather[0].main)}
-          autoPlay
-          loop
-          style={styles.animation}
-        />
-
+        <View style={styles.animationContainer}>
+          <LottieView
+            source={getWeatherAnimation(weatherData.weather[0].main)}
+            autoPlay
+            loop
+            resizeMode="contain"
+            style={styles.animation}
+          />
+        </View>
         {/* Weekly Forecast */}
         <View style={styles.weeklyContainer}>
           <Text style={styles.sectionTitle}>Weekly Forecast</Text>
@@ -200,9 +202,18 @@ const styles = StyleSheet.create({
     color: "#555",
     marginBottom: 5,
   },
+  animationContainer: {
+    width: "100%",
+    height: height * 0.3,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
   animation: {
-    width: 350,
-    height: 350,
+    width: 250,
+    height: 250,
+    alignSelf: "center",
+    marginVertical: 20,
   },
   weeklyContainer: {
     width: "90%",

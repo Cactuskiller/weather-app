@@ -94,12 +94,15 @@ export default function WeatherScreen() {
         {Math.round(weatherData?.main?.temp)}°C
       </Text>
       <Text style={styles.description}>{weatherData?.weather[0]?.main}</Text>
-      <LottieView
-        source={getWeatherAnimation(weatherData?.weather[0]?.main)}
-        autoPlay
-        loop
-        style={styles.animation}
-      />
+      <View style={styles.animationContainer}>
+        <LottieView
+          source={getWeatherAnimation(weatherData?.weather[0]?.main)}
+          autoPlay
+          loop
+          resizeMode="contain"
+          style={styles.animation}
+        />
+      </View>
     </TouchableOpacity>
   );
 
@@ -244,10 +247,17 @@ const styles = StyleSheet.create({
     fontSize: 18,
     color: "#333",
   },
+  animationContainer: {
+    width: "100%",
+    height: height * 0.3,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
   animation: {
-    width: 150,
-    height: 150,
-    marginTop: 10,
+    width: 250,
+    height: 250,
+    alignSelf: "center",
   },
   error: {
     color: "red",
